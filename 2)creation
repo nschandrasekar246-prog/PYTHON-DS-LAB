@@ -1,0 +1,104 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyNeYdtXGML5jmmzrcT8OMM5",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/nschandrasekar246-prog/PYTHON-DS-LAB/blob/main/2)creation\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 2,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "tEDZQKeM2UuX",
+        "outputId": "e2342c85-83b3-451d-b49a-6200085642b8"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Nodes of the circular linked list:\n",
+            "10 20 30 40 "
+          ]
+        }
+      ],
+      "source": [
+        "class Node:\n",
+        "    def __init__(self, data):\n",
+        "        self.data = data\n",
+        "        self.next = None\n",
+        "\n",
+        "\n",
+        "class CreateList:\n",
+        "    def __init__(self):\n",
+        "        self.head = None\n",
+        "        self.tail = None\n",
+        "\n",
+        "    def add(self, data):\n",
+        "        newNode = Node(data)\n",
+        "\n",
+        "        if self.head is None:\n",
+        "            self.head = newNode\n",
+        "            self.tail = newNode\n",
+        "            newNode.next = self.head\n",
+        "        else:\n",
+        "            self.tail.next = newNode\n",
+        "            self.tail = newNode\n",
+        "            self.tail.next = self.head\n",
+        "\n",
+        "    def display(self):\n",
+        "        if self.head is None:\n",
+        "            print(\"List is empty\")\n",
+        "            return\n",
+        "\n",
+        "        current = self.head\n",
+        "\n",
+        "        print(\"Nodes of the circular linked list:\")\n",
+        "\n",
+        "        while True:\n",
+        "            print(current.data, end=\" \")\n",
+        "            current = current.next\n",
+        "\n",
+        "            if current == self.head:\n",
+        "                break\n",
+        "\n",
+        "\n",
+        "# Create the list\n",
+        "list1 = CreateList()\n",
+        "\n",
+        "# Add nodes\n",
+        "list1.add(10)\n",
+        "list1.add(20)\n",
+        "list1.add(30)\n",
+        "list1.add(40)\n",
+        "\n",
+        "# Display\n",
+        "list1.display()"
+      ]
+    }
+  ]
+}
