@@ -1,0 +1,107 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyOZOa/CkkqYz3rvqka9A5Vl",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/nschandrasekar246-prog/PYTHON-DS-LAB/blob/main/6)%20DESIGN%20AND%20IMPLEMENT%20QUEUE%20AND%20ITS%20OPERATIONS%20USING%20LIST\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 4,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "qPImsgxXl96f",
+        "outputId": "1c75c55c-84fb-4012-b7e8-21ffaec302dd"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Deleted: 10\n",
+            "Deleted: 20\n",
+            "Deleted: 30\n",
+            "Deleted: 40\n"
+          ]
+        }
+      ],
+      "source": [
+        "\n",
+        "class Node:\n",
+        "    def __init__(self, data):\n",
+        "        self.data = data\n",
+        "        self.next = None\n",
+        "\n",
+        "\n",
+        "class Queue:\n",
+        "\n",
+        "    def __init__(self):\n",
+        "        self.front = self.rear = None\n",
+        "\n",
+        "    def isEmpty(self):\n",
+        "        return self.front is None\n",
+        "\n",
+        "    def EnQueue(self, item):\n",
+        "        temp = Node(item)\n",
+        "\n",
+        "        if self.rear is None:\n",
+        "            self.front = self.rear = temp\n",
+        "            return\n",
+        "\n",
+        "        self.rear.next = temp\n",
+        "        self.rear = temp\n",
+        "\n",
+        "    def DeQueue(self):\n",
+        "        if self.isEmpty():\n",
+        "            return \"Queue is Empty\"\n",
+        "\n",
+        "        temp = self.front\n",
+        "        self.front = temp.next\n",
+        "\n",
+        "        if self.front is None:\n",
+        "            self.rear = None\n",
+        "\n",
+        "        return str(temp.data)\n",
+        "\n",
+        "\n",
+        "if __name__ == '__main__':\n",
+        "    q = Queue()\n",
+        "\n",
+        "    q.EnQueue(10)\n",
+        "    q.EnQueue(20)\n",
+        "\n",
+        "    print(\"Deleted:\", q.DeQueue())\n",
+        "    print(\"Deleted:\", q.DeQueue())\n",
+        "\n",
+        "    q.EnQueue(30)\n",
+        "    q.EnQueue(40)\n",
+        "\n",
+        "    print(\"Deleted:\", q.DeQueue())\n",
+        "    print(\"Deleted:\", q.DeQueue())\n"
+      ]
+    }
+  ]
+}
